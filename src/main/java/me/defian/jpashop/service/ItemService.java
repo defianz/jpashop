@@ -1,6 +1,7 @@
 package me.defian.jpashop.service;
 
 import lombok.RequiredArgsConstructor;
+import me.defian.jpashop.domain.item.Book;
 import me.defian.jpashop.domain.item.Item;
 import me.defian.jpashop.repository.ItemRepository;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,15 @@ public class ItemService {
     @Transactional
     public void saveItem(Item item){
         itemRepository.save(item);
+    }
+
+    @Transactional
+    public Item updateItem(Long itemId, String name, int price, int stockQuantity){
+        Item findItem = itemRepository.findOne(itemId);
+        findItem.setPrice(price);
+        findItem.setName(name);
+        findItem.setStockQuantity(stockQuantity);
+        return findItem;
     }
 
     public List<Item> findItems(){

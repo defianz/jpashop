@@ -10,6 +10,7 @@ import me.defian.jpashop.domain.item.Item;
 import me.defian.jpashop.repository.ItemRepository;
 import me.defian.jpashop.repository.MemberRepository;
 import me.defian.jpashop.repository.OrderRepository;
+import me.defian.jpashop.repository.OrderSearch;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -65,7 +66,7 @@ public class OrderService {
 
 
     //검색
-//    public List<Order> findOrders(OrderSearch orderSearch){
-//        return orderRepository.findAll(orderSearch);
-//    }
+    public List<Order> findOrders(OrderSearch orderSearch){
+        return orderRepository.findAllByString(orderSearch);
+    }
 }
