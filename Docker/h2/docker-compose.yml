@@ -7,3 +7,5 @@ services:
       - "8082:81"
     volumes:
       - "/Users/defian/Docker/h2:/opt/h2-data"
+    environment:
+      - H2_OPTIONS: "-ifNotExists"s
